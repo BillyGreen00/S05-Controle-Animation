@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 
 public class ControleAraigneeV2 : MonoBehaviour
 {
-    // variables de mouvement et contrôle
+    // variables de mouvement et contrï¿½le
     [SerializeField] private float _vitessePromenade;
     private Rigidbody _rb;
     private Vector3 directionInput;
 
-    // variables de contrôle d'animation
+    // variables de contrï¿½le d'animation
     private Animator _animator;
     private float _rotationVelocity;
 
@@ -25,6 +25,10 @@ public class ControleAraigneeV2 : MonoBehaviour
         Vector2 directionAvecVitesse = directionBase.Get<Vector2>() * _vitessePromenade;
         directionInput = new Vector3(directionAvecVitesse.x, 0f, directionAvecVitesse.y);
         _animator.SetFloat("Deplacement", directionInput.magnitude);
+    }
+
+    void OnAttaquer(){
+        _animator.SetTrigger("Attaquer2");
     }
 
     void FixedUpdate()
